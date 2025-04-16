@@ -1,0 +1,14 @@
+#Here is an updated version of requirements.txt file
+torch==2.1.0
+transformers==4.39.3
+datasets==2.17.1
+scikit-learn==1.3.2
+faiss-cpu==1.7.4
+accelerate==0.28.0
+tqdm==4.66.1
+requests==2.31.0
+sentencepiece==0.1.99
+huggingface-hub==0.21.4
+pandas==2.2.1
+peft==0.8.2
+trl==0.8.6

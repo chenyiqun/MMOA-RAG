@@ -84,19 +84,26 @@ def concatenate_strings(strings_list):
 # ambigqa
 dataset_name = 'ambigqa'
 data_train, data_test = [], []
-with open('/root/paddlejob/workspace/env_run/rag/data/ambigqa/train_data.jsonl', 'r', encoding='utf-8') as file:
+with open('./data/ambigqa/train_data.jsonl', 'r', encoding='utf-8') as file:
     for line in file:
         data_train.append(json.loads(line.strip()))
-with open('/root/paddlejob/workspace/env_run/rag/data/ambigqa/test_data.jsonl', 'r', encoding='utf-8') as file:
+with open('./data/ambigqa/test_data.jsonl', 'r', encoding='utf-8') as file:
     for line in file:
         data_test.append(json.loads(line.strip()))
 print('len(data_train): {}, len(data_test): {}'.format(len(data_train), len(data_test)))
 
-pre_path = '/root/paddlejob/workspace/env_run/rag/data/'
-retriever_model_path = '/root/paddlejob/workspace/env_run/rag/models/facebook/contriever'
+pre_path = './data/'
+
+#retriever_model_path = '/root/paddlejob/workspace/env_run/rag/models/facebook/contriever'
+
+retriever_model_path = "facebook/contriever"
+retriever_tokenizer = AutoTokenizer.from_pretrained(retriever_model_path)
+retriever_model = AutoModel.from_pretrained(retriever_model_path)
+
 index_path = pre_path+'wikipedia.contriever'
 docs_path = pre_path+'psgs_w100.tsv'
-top_k_docs_path = pre_path+'ambigqa/val_top_k_docs.jsonl'
+#top_k_docs_path = pre_path+'ambigqa/val_top_k_docs.jsonl'
+top_k_docs_path = './data/ambigqa/val_top_k_docs.jsonl'
 
 # loading retriever model
 print('*'*20)

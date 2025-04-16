@@ -299,7 +299,7 @@ def get_qr_messages(question):
 
 dataset_name = '2wikimultihopqa'
 
-top_k_docs_path = '/root/paddlejob/workspace/env_run/rag/data/{}/val_top_k_docs.jsonl'.format(dataset_name)
+top_k_docs_path = './data/ambigqa/val_top_k_docs.jsonl'.format(dataset_name)
 generator_model_path = '/root/paddlejob/workspace/env_run/rag/LLaMA-Factory/models/llama3-8b/{}/qr_s/ppo_1'.format(dataset_name)
 # generator_model_path = '/root/paddlejob/workspace/env_run/rag/LLaMA-Factory/models/llama3-8b/2wikimultihopqa/qr_selector_and_generator/sft_1'
 
@@ -376,6 +376,27 @@ for i in tqdm(range(0, len(qr_messages_list), batch_size)):
         if i < 20:
             print(qr_answer_list)
             print('\n')
+
+
+#Added code for saving the file
+# ✅ Save query rewrite pairs to query_rewrite_hotpotqa.json
+qr_pairs = []
+for i in range(len(all_questions)):
+    source = all_questions[i]
+    target_list = qr_answers[i]
+    target = ";".join(target_list)
+    qr_pairs.append({
+        "source": source,
+        "target": target
+    })
+
+save_path = "./data/query_rewrite_data/query_rewrite_hotpotqa.json"
+os.makedirs(os.path.dirname(save_path), exist_ok=True)
+
+with open(save_path, "w", encoding="utf-8") as f:
+    json.dump(qr_pairs, f, ensure_ascii=False, indent=2)
+
+print(f"✅ Saved query rewrite data to: {save_path}")
 
 # 1. 删除模型
 del model

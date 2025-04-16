@@ -106,7 +106,7 @@ top_k_docs_path = '/root/paddlejob/workspace/env_run/rag/data/{}/train_top_k_doc
 # loading query rewriter data
 print('*'*20)
 print('loading query rewriter data')
-file_path = '/root/paddlejob/workspace/env_run/rag/data/query_rewrite_data/query_rewrite_hotpotqa.json'
+file_path = './data/query_rewrite_data/query_rewrite_hotpotqa.json'
 with open(file_path, 'r', encoding='utf-8') as file:
     query_rewrite_data = json.load(file)  # 使用 json.load() 将 JSON 数据解析为字典
 init_questions = []
