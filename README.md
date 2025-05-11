@@ -2,8 +2,6 @@
 
 This repository contains the code for MMOA-RAG, a system for multi-modules optimization involving Query Rewriter, Retriever, Selector and Generator. The code is organized into several components that facilitate the deployment, training, and evaluation of the RAG system.
 
-Paper: [Improving Retrieval-Augmented Generation through Multi-Agent Reinforcement Learning](https://arxiv.org/abs/2501.15228)
-
 ## Table of Contents
 
 - [Computational Resource Requirements](#computational-resource-requirements)
